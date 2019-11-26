@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public class PokemonType {
-
     private String name;
     private Map<String, List<String>> damageRelations;
     private List<Pokemon> pokemons;

@@ -41,7 +41,6 @@ public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavViewHolder
     @Override
     public void onBindViewHolder(@NonNull PokemonFavViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
-
         Glide.with(mContext).load(pokemon.getImage()).into(holder.pokemonImage);
         holder.pokemonName.setText(pokemon.getName());
     }

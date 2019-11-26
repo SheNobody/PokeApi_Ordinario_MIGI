@@ -34,4 +34,3 @@ public class PokemonFavViewHolder extends RecyclerView.ViewHolder implements Vie
         if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
     }
 }
-

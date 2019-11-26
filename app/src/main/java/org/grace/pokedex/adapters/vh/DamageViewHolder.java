@@ -1,4 +1,4 @@
-package org.grace.pokedex.adapters;
+package org.grace.pokedex.adapters.vh;
 
 import android.view.View;
 import android.widget.ImageView;

@@ -18,7 +18,7 @@ import org.grace.pokedex.utils.TypeUtils;
 
 import java.util.List;
 
-public class DamageRelationAdapter extends RecyclerView.Adapter<DamageViewHolder.ViewHolder> {
+public class DamageRelationAdapter extends RecyclerView.Adapter<org.grace.pokedex.adapters.DamageViewHolder.ViewHolder> {
 
     private PokemonType pokemonType;
     private LayoutInflater mInflater;
@@ -32,14 +32,13 @@ public class DamageRelationAdapter extends RecyclerView.Adapter<DamageViewHolder
 
     @Override
     @NonNull
-    public DamageViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public org.grace.pokedex.adapters.DamageViewHolder.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.damage_relation_item, parent, false);
-        return new DamageViewHolder.ViewHolder(view);
+        return new org.grace.pokedex.adapters.DamageViewHolder.ViewHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(@NonNull DamageViewHolder.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull org.grace.pokedex.adapters.DamageViewHolder.ViewHolder holder, int position) {
         Glide.with(mContext).load(PokemonUtils.getDrawable(mContext, pokemonType.getName())).into(holder.damageFrom);
         holder.relation.setText(TypeUtils.changedrelationNames[position]);
         List<String> relationTypes = pokemonType.getDamageRelations().get(TypeUtils.relationNames[position]);
@@ -51,6 +50,5 @@ public class DamageRelationAdapter extends RecyclerView.Adapter<DamageViewHolder
     public int getItemCount() {
         return pokemonType.getDamageRelations().size();
     }
-
 
 }

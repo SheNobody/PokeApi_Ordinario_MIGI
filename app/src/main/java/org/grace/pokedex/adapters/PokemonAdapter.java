@@ -38,7 +38,6 @@ public class PokemonAdapter extends RecyclerView.Adapter<org.grace.pokedex.adapt
     @Override
     public void onBindViewHolder(@NonNull org.grace.pokedex.adapters.PokemonViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
-
         Glide.with(mContext).load(pokemon.getImage()).into(holder.pokemonImage);
         holder.pokemonName.setText(pokemon.getName());
     }

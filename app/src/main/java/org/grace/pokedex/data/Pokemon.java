@@ -20,10 +20,8 @@ public class Pokemon {
     public Pokemon(String name, String url) {
         this.name = name;
         this.url = url;
-
         this.id = url.replace("https://pokeapi.co/api/v2/pokemon/", "")
                 .replace("/", "");
-
         String assetId = id;
 
         if (id.length() == 1) {
@@ -31,7 +29,6 @@ public class Pokemon {
         } else if (id.length() == 2) {
             assetId = "0" + id;
         }
-
         this.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + assetId + ".png";
     }
 

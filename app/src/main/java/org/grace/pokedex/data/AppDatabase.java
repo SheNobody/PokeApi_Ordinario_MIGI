@@ -19,7 +19,6 @@ public abstract class AppDatabase extends RoomDatabase {
             database = Room.databaseBuilder(context.getApplicationContext(),
                     AppDatabase.class, "pokemonDB").allowMainThreadQueries().build();
         }
-
         return database;
     }
 }

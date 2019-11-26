@@ -15,7 +15,6 @@ public class PokemonDetails {
         this.baseExperience = baseExperience;
         this.height = height;
         this.types = types;
-
         String assetId = String.valueOf(id);
 
         if (assetId.length() == 1) {
@@ -23,7 +22,6 @@ public class PokemonDetails {
         } else if (assetId.length() == 2) {
             assetId = "0" + id;
         }
-
         this.image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + assetId + ".png";
     }
 
