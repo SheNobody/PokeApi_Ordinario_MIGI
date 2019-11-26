@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import org.grace.pokedex.R;
+import org.grace.pokedex.adapters.vh.PokemonFavViewHolder;
 import org.grace.pokedex.data.Pokemon;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavAdapter.ViewHolder> {
+public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavViewHolder> {
 
     private List<Pokemon> mData;
     private LayoutInflater mInflater;
@@ -32,13 +33,13 @@ public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavAdapter.Vi
 
     @Override
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PokemonFavViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.pokemon_item3_fav, parent, false);
-        return new ViewHolder(view);
+        return new PokemonFavViewHolder(view, mClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PokemonFavViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
 
         Glide.with(mContext).load(pokemon.getImage()).into(holder.pokemonImage);
@@ -48,30 +49,6 @@ public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavAdapter.Vi
     @Override
     public int getItemCount() {
         return mData.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView pokemonName;
-        ImageView pokemonImage, fav;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            pokemonName = itemView.findViewById(R.id.tv_pokemon_name);
-            pokemonImage = itemView.findViewById(R.id.iv_pokemon_image);
-            fav = itemView.findViewById(R.id.details_favorite);
-            itemView.setOnClickListener(this);
-            fav.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mClickListener != null) mClickListener.onDeleteItem(getAdapterPosition());
-                }
-            });
-        }
-
-        @Override
-        public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
-        }
     }
 
     public Pokemon getPokemon(int id) {
