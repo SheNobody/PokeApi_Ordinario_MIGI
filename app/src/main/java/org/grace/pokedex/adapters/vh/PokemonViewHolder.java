@@ -10,9 +10,9 @@ import org.grace.pokedex.R;
 import org.grace.pokedex.adapters.PokemonAdapter;
 
 public class PokemonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    TextView pokemonName;
-    ImageView pokemonImage;
-    PokemonAdapter.ItemClickListener itemClickListener;
+    public TextView pokemonName;
+    public ImageView pokemonImage;
+    private PokemonAdapter.ItemClickListener itemClickListener;
 
     public PokemonViewHolder(View itemView, PokemonAdapter.ItemClickListener listener) {
         super(itemView);

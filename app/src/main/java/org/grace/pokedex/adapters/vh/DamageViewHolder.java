@@ -10,9 +10,9 @@ import org.grace.pokedex.R;
 
 public class DamageViewHolder {
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView relation;
-        ImageView damageFrom;
-        RecyclerView rvTypes;
+        public TextView relation;
+        public ImageView damageFrom;
+        public RecyclerView rvTypes;
 
         public ViewHolder(View itemView) {
             super(itemView);

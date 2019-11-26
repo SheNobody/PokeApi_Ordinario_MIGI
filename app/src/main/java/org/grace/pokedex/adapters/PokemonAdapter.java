@@ -11,11 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import org.grace.pokedex.R;
+import org.grace.pokedex.adapters.vh.PokemonViewHolder;
 import org.grace.pokedex.data.Pokemon;
 
 import java.util.List;
 
-public class PokemonAdapter extends RecyclerView.Adapter<org.grace.pokedex.adapters.PokemonViewHolder> {
+public class PokemonAdapter extends RecyclerView.Adapter<PokemonViewHolder> {
 
     private List<Pokemon> mData;
     private LayoutInflater mInflater;
@@ -30,13 +31,13 @@ public class PokemonAdapter extends RecyclerView.Adapter<org.grace.pokedex.adapt
 
     @Override
     @NonNull
-    public org.grace.pokedex.adapters.PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PokemonViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.pokemon_item, parent, false);
-        return new org.grace.pokedex.adapters.PokemonViewHolder(view, mClickListener);
+        return new PokemonViewHolder(view, mClickListener);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull org.grace.pokedex.adapters.PokemonViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PokemonViewHolder holder, int position) {
         Pokemon pokemon = mData.get(position);
         Glide.with(mContext).load(pokemon.getImage()).into(holder.pokemonImage);
         holder.pokemonName.setText(pokemon.getName());
