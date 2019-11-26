@@ -82,12 +82,9 @@ public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskH
     @Override
     public void onTaskEnd(Object result) {
         PokemonType pokemonType = (PokemonType) result;
-
         name.setText(pokemonType.getName());
-
         damageRelations.setLayoutManager(new LinearLayoutManager(this));
         damageRelations.setAdapter(new DamageRelationAdapter(this, pokemonType));
-
         pokemons.setLayoutManager(new GridLayoutManager(this, 1));
         adapter = new PokemonTypeListAdapter(this, pokemonType.getPokemons());
         adapter.setClickListener(this);
@@ -97,7 +94,6 @@ public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskH
     @Override
     public void onItemClick(View view, int position) {
         Pokemon pokemon = adapter.getPokemon(position);
-
         Intent intent = new Intent(this, PokemonDetailsActivity.class);
         intent.putExtra("URL", pokemon.getUrl());
         startActivity(intent);

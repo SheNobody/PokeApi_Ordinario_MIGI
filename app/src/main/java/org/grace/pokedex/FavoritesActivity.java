@@ -47,7 +47,6 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonFavAd
         recyclerView.setAdapter(adapter);
         favorite = findViewById(R.id.details_favorite);
         rvDetailsTypes = findViewById(R.id.rv_details_types);
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -67,7 +66,6 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonFavAd
                 startActivity(intent);
                 return true;
             case android.R.id.home:
-                // app icon in action bar clicked; go home
                 onBackPressed();
                 return true;
             default:
@@ -92,7 +90,7 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonFavAd
 
     private void showAlert(final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("¿Seguro que quieres eliminar a " + pokemon.getName()+ " de favoritos?");
+        builder.setMessage("¿Seguro que quieres eliminar a " + pokemon.getName() + " de favoritos?");
         builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 DeletePokemonAsyncTask taskDelete = new DeletePokemonAsyncTask(FavoritesActivity.this, FavoritesActivity.this);
@@ -106,7 +104,6 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonFavAd
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
 
     @Override
     public void onDeleteItem(int position) {
@@ -124,7 +121,6 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonFavAd
         GetPokemonsAsyncTask task = new GetPokemonsAsyncTask();
         task.execute();
     }
-
 
     public class GetPokemonsAsyncTask extends AsyncTask<Void, Void, List<Pokemon>> {
 

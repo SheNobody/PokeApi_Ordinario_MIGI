@@ -3,13 +3,8 @@ package org.grace.pokedex.utils;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.util.Log;
-import org.grace.pokedex.interfaces.AsyncTaskHandler;
-import org.grace.pokedex.data.Pokemon;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
 
 public class PokemonUtils {
     private static final String LOG_TAG = PokemonUtils.class.getSimpleName();
@@ -86,4 +79,4 @@ public class PokemonUtils {
         int resID = res.getIdentifier(drawableName, "drawable", context.getPackageName());
         return res.getDrawable(resID);
     }
-    }
+}

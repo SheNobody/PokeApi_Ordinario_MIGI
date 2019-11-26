@@ -66,7 +66,6 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskHandler,
                 startActivity(intent);
                 return true;
             case android.R.id.home:
-                // app icon in action bar clicked; go home
                 onBackPressed();
                 return true;
             default:
@@ -86,7 +85,6 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskHandler,
     @Override
     public void onItemClick(View view, int position) {
         Pokemon pokemon = adapter.getPokemon(position);
-
         Intent intent = new Intent(this, PokemonDetailsActivity.class);
         intent.putExtra("URL", pokemon.getUrl());
         startActivity(intent);
@@ -139,4 +137,4 @@ public class HomeActivity extends AppCompatActivity implements AsyncTaskHandler,
             return null;
         }
     }
-    }
+}

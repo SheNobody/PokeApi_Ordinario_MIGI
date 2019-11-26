@@ -51,7 +51,6 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_details);
-
         image = findViewById(R.id.details_image);
         favorite = findViewById(R.id.details_favorite);
         name = findViewById(R.id.details_name);
@@ -62,11 +61,9 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
         typeText = findViewById(R.id.detatils_typessText);
         rvDetailsTypes = findViewById(R.id.rv_details_types);
         url = getIntent().getStringExtra("URL");
-
         PokemonDetailsAsyncTask pokemonDetailsAsyncTask = new PokemonDetailsAsyncTask();
         pokemonDetailsAsyncTask.handler = this;
         pokemonDetailsAsyncTask.execute(url);
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -86,7 +83,6 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
                 startActivity(intent);
                 return true;
             case android.R.id.home:
-                // app icon in action bar clicked; go home
                 onBackPressed();
                 return true;
             default:
@@ -112,7 +108,6 @@ public class PokemonDetailsActivity extends AppCompatActivity implements AsyncTa
         rvDetailsTypes.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvDetailsTypes.setAdapter(new RowTypesAdapter(this, Arrays.asList(details.getTypes())));
         types.setText("Tipo/s " + System.lineSeparator() + typesString);
-
         GetPokemonByName task = new GetPokemonByName();
         task.execute(details.getName());
     }
