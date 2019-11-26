@@ -13,6 +13,8 @@
         android:id="@+id/progress_bar"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:foregroundGravity="center_vertical|center"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
