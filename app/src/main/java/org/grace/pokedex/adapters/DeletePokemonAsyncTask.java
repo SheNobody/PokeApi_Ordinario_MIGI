@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import androidx.core.content.ContextCompat;
-
 import org.grace.pokedex.data.AppDatabase;
 import org.grace.pokedex.data.Pokemon;
 import org.grace.pokedex.interfaces.AsyncTaskHandler;
@@ -35,5 +33,4 @@ public class DeletePokemonAsyncTask extends AsyncTask<Pokemon, Void, Integer> {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
         if (handler != null) handler.onTaskEnd(null);
     }
-
 }

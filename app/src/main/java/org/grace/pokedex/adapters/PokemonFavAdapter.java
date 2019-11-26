@@ -17,14 +17,14 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class PokemonAdapter2 extends RecyclerView.Adapter<PokemonAdapter2.ViewHolder> {
+public class PokemonFavAdapter extends RecyclerView.Adapter<PokemonFavAdapter.ViewHolder> {
 
     private List<Pokemon> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Context mContext;
 
-    public PokemonAdapter2(Context context, List<Pokemon> data) {
+    public PokemonFavAdapter(Context context, List<Pokemon> data) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
@@ -33,7 +33,7 @@ public class PokemonAdapter2 extends RecyclerView.Adapter<PokemonAdapter2.ViewHo
     @Override
     @NonNull
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.pokemon_item2_list, parent, false);
+        View view = mInflater.inflate(R.layout.pokemon_item3_fav, parent, false);
         return new ViewHolder(view);
     }
 
@@ -52,13 +52,20 @@ public class PokemonAdapter2 extends RecyclerView.Adapter<PokemonAdapter2.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView pokemonName;
-        ImageView pokemonImage;
+        ImageView pokemonImage, fav;
 
         ViewHolder(View itemView) {
             super(itemView);
             pokemonName = itemView.findViewById(R.id.tv_pokemon_name);
             pokemonImage = itemView.findViewById(R.id.iv_pokemon_image);
+            fav = itemView.findViewById(R.id.details_favorite);
             itemView.setOnClickListener(this);
+            fav.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (mClickListener != null) mClickListener.onDeleteItem(getAdapterPosition());
+                }
+            });
         }
 
         @Override
@@ -77,5 +84,11 @@ public class PokemonAdapter2 extends RecyclerView.Adapter<PokemonAdapter2.ViewHo
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);
+        void onDeleteItem(int position);
+    }
+
+    public void setItems(List<Pokemon> items) {
+        this.mData = items;
+        notifyDataSetChanged();
     }
 }

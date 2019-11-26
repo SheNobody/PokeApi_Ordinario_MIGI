@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 
 import org.grace.pokedex.R;
 import org.grace.pokedex.data.Pokemon;
+import org.grace.pokedex.viewholder.PokemonViewHolder;
 
 import java.util.List;
 

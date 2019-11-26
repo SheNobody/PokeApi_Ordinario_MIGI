@@ -16,7 +16,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import org.grace.pokedex.adapters.DamageRelationAdapter;
-import org.grace.pokedex.adapters.PokemonAdapter2;
+import org.grace.pokedex.adapters.PokemonTypeListAdapter;
 import org.grace.pokedex.data.Pokemon;
 import org.grace.pokedex.data.PokemonType;
 import org.grace.pokedex.interfaces.AsyncTaskHandler;
@@ -34,30 +34,25 @@ import java.util.Map;
 import static org.grace.pokedex.utils.PokemonUtils.createUrl;
 import static org.grace.pokedex.utils.PokemonUtils.makeHttpRequest;
 
-
-public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskHandler, PokemonAdapter2.ItemClickListener {
+public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskHandler, PokemonTypeListAdapter.ItemClickListener {
 
     TextView name;
     RecyclerView damageRelations;
     RecyclerView pokemons;
-    PokemonAdapter2 adapter;
+    PokemonTypeListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pokemon_type);
-
         name = findViewById(R.id.type_name);
         damageRelations = findViewById(R.id.type_damage_relations);
         pokemons = findViewById(R.id.type_pokemons);
-
         String type = getIntent().getStringExtra("TYPE");
         String url = "https://pokeapi.co/api/v2/type/" + type;
-
         TypeUtils pokemonTypeAsyncTask = new TypeUtils();
         pokemonTypeAsyncTask.handler = this;
         pokemonTypeAsyncTask.execute(url);
-
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -94,7 +89,7 @@ public class PokemonTypeActivity extends AppCompatActivity implements AsyncTaskH
         damageRelations.setAdapter(new DamageRelationAdapter(this, pokemonType));
 
         pokemons.setLayoutManager(new GridLayoutManager(this, 1));
-        adapter = new PokemonAdapter2(this, pokemonType.getPokemons());
+        adapter = new PokemonTypeListAdapter(this, pokemonType.getPokemons());
         adapter.setClickListener(this);
         pokemons.setAdapter(adapter);
     }

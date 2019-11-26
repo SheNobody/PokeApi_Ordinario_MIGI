@@ -15,6 +15,7 @@ import org.grace.pokedex.R;
 import org.grace.pokedex.data.PokemonType;
 import org.grace.pokedex.utils.PokemonUtils;
 import org.grace.pokedex.utils.TypeUtils;
+import org.grace.pokedex.viewholder.DamageViewHolder;
 
 import java.util.List;
 

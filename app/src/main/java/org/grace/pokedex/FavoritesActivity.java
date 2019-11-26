@@ -10,11 +10,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.grace.pokedex.adapters.AppDataBaseSingleton;
 import org.grace.pokedex.adapters.DeletePokemonAsyncTask;
-import org.grace.pokedex.adapters.PokemonAdapter3;
+import org.grace.pokedex.adapters.PokemonFavAdapter;
 import org.grace.pokedex.data.AppDatabase;
 import org.grace.pokedex.data.Pokemon;
 import org.grace.pokedex.interfaces.AsyncTaskHandler;
@@ -27,12 +26,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+public class FavoritesActivity extends AppCompatActivity implements PokemonFavAdapter.ItemClickListener, AsyncTaskHandler {
 
-
-public class FavoritesActivity extends AppCompatActivity implements PokemonAdapter3.ItemClickListener, AsyncTaskHandler {
-
-    PokemonAdapter3 adapter;
+    PokemonFavAdapter adapter;
     RecyclerView recyclerView;
     ImageView favorite;
     RecyclerView rvDetailsTypes;
@@ -46,7 +42,7 @@ public class FavoritesActivity extends AppCompatActivity implements PokemonAdapt
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.rv_pokemon);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3));
-        adapter = new PokemonAdapter3(this, favoritePokemons);
+        adapter = new PokemonFavAdapter(this, favoritePokemons);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         favorite = findViewById(R.id.details_favorite);
